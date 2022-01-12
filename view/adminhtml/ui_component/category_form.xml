@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="content">
+        <field name="category_widgets">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="source" xsi:type="string">category</item>
+                    <item name="label" xsi:type="string" translate="true">Category Widgets</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="required" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="component" xsi:type="string">Riff_WidgetExtensions/js/form/element/widgets-table</item>
+                    <item name="template" xsi:type="string">ui/form/field</item>
+                    <item name="elementTmpl" xsi:type="string">Riff_WidgetExtensions/form/element/widgets-table</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </field>
+        <container name="category.widgets.config">
+            <htmlContent name="html_content">
+                <argument name="block" xsi:type="object">Riff\WidgetExtensions\Block\Adminhtml\Category\WidgetTable</argument>
+            </htmlContent>
+        </container>
+    </fieldset>
+</form>

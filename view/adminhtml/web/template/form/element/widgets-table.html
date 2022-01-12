@@ -1,0 +1,107 @@
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<input class="admin__control-text" type="hidden"
+       data-bind="
+        event: {change: userChanges},
+        value: value(),
+        hasFocus: focused,
+        valueUpdate: valueUpdate,
+        attr: {
+            name: inputName,
+            placeholder: placeholder,
+            'aria-describedby': noticeId,
+            id: uid,
+            disabled: disabled
+    }"/>
+
+<div data-bind="visible: !saved()" style="color: red">
+    <!-- ko i18n: 'Data not yet saved, press the table save button BEFORE saving the category!' --><!-- /ko -->
+</div>
+
+<div class="admin__data-grid-wrap admin__data-grid-wrap-static">
+    <table class="data-grid">
+        <thead>
+        <tr>
+            <th class="data-grid-th">
+                <span>
+                    <!-- ko i18n: 'After block' --><!-- /ko -->
+                </span>
+            </th>
+            <th class="data-grid-th">
+                <span>
+                    <!-- ko i18n: 'Widget' --><!-- /ko -->
+                </span>
+            </th>
+            <th class="data-grid-th">
+                <span>
+                    <!-- ko i18n: 'Widget preview' --><!-- /ko -->
+                </span>
+            </th>
+            <th class="data-grid-th">
+                <span>
+                    <!-- ko i18n: 'Remove' --><!-- /ko -->
+                </span>
+            </th>
+        </tr>
+        </thead>
+        <tbody data-bind="foreach: items()">
+            <tr class="data-grid-tr-no-data" data-bind="css: { 'even': ($index() % 2 == 0) }">
+                <td>
+                    <input class="admin__control-text" type="number" data-bind="value: $data.column, event: { keypress: function(){ $parent.saved(false); return true; } }"/>
+                </td>
+                <td>
+                    <input class="admin__control-text" type="hidden" data-bind="value: $data.widget, attr: { id: ($parent.uid + $index()) }"/>
+                    <button type="button"
+                            class="action- scalable primary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                            role="button" aria-disabled="false"
+                            data-bind="click: function() { $parent.saved(false); $parent.openWidgetDialog($parent.uid + $index()); return true;}">
+                        <span class="ui-button-text">
+                            <!-- ko i18n: 'Edit/Insert Widget' --><!-- /ko -->
+                        </span>
+                    </button>
+                </td>
+                <td class="widget-holder-cell apply-frontend-css" data-bind="css: 'item-' + $index()">
+                    <iframe></iframe>
+                </td>
+                <td>
+                    <button type="button"
+                            class="action- scalable primary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                            role="button" aria-disabled="false"
+                            data-bind="click: function() { $parent.saved(false); $parent.removeItemRow($index(), $parent); return true; }">
+                        <span class="ui-button-text">
+                            <!-- ko i18n: 'Remove Widget' --><!-- /ko -->
+                        </span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+        <tbody>
+        <tr>
+            <td>
+                <button type="button"
+                        class="action- scalable primary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                        role="button" aria-disabled="false"
+                        data-bind="click: addNewRow">
+                        <span class="ui-button-text">
+                            <!-- ko i18n: '+ New widget' --><!-- /ko -->
+                        </span>
+                </button>
+            </td>
+            <td colspan="3">
+                <button type="button"
+                        class="action- scalable primary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                        role="button" aria-disabled="false"
+                        data-bind="click: saveItemsData">
+                        <span class="ui-button-text">
+                            <!-- ko i18n: 'Save' --><!-- /ko -->
+                        </span>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+
+    <widget id="example_widget" class="Riff\WidgetExtensions\Block\Widget\BaseWidget">
+        <label translate="true">Riff - Example Widget</label>
+        <description translate="true">Example widget</description>
+        <parameters>
+            <parameter name="template" xsi:type="select" visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="example_widget.phtml" selected="true">
+                        <label translate="true">Example template</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="example_heading" xsi:type="block" visible="true" sort_order="4">
+                <label translate="true"> </label>
+                <block class="Riff\WidgetExtensions\Block\Adminhtml\Widget\Title">
+                    <data>
+                        <item name="block_heading" xsi:type="string">Example Header</item>
+                    </data>
+                </block>
+            </parameter>
+
+            <parameter name="widget_image_chooser" xsi:type="block" visible="true" sort_order="5">
+                <label translate="true">Example image</label>
+                <description translate="true">Example image</description>
+                <block class="Riff\WidgetExtensions\Block\Adminhtml\Widget\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+
+            <parameter name="colorpicker" xsi:type="block" visible="true" sort_order="17">
+                <label translate="true">Example color</label>
+                <block class="Riff\WidgetExtensions\Block\Adminhtml\Widget\ColorPicker" />
+            </parameter>
+
+            <parameter name="example_dropdown" xsi:type="select" visible="true" sort_order="26" source_model="Riff\WidgetExtensions\Model\System\Source\ExampleSource">
+                <label translate="true">Example dropdown from source</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

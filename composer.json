@@ -1,0 +1,19 @@
+{
+  "name": "riff/module-widgetextensions",
+  "description": "Widget extensions",
+  "license": "proprietary",
+  "type": "magento2-module",
+  "minimum-stability": "dev",
+  "require": {
+        "php": "~7.0|~7.1|~7.2|~7.3",
+        "magento/framework": ">=102.0.0"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Riff\\WidgetExtensions\\": ""
+    }
+  }
+}
